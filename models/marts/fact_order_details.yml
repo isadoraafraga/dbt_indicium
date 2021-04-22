@@ -1,0 +1,34 @@
+
+version: 2
+
+models:
+  - name: fact_order_details
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+
+      - name: customer_fk
+        tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_sk
+
+      - name: shipper_fk
+        tests:
+          - relationships:
+              to: ref('dim_shippers')
+              field: shipper_sk
+
+      - name: product_fk
+        tests:
+          - relationships:
+              to: ref('dim_products')
+              field: product_sk
+
+      - name: supplier_fk
+        tests:
+          - relationships:
+              to: ref('dim_suppliers')
+              field: supplier_sk
+              
